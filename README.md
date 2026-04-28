@@ -379,28 +379,7 @@ Covered endpoints include:
 * Transaction creation and retrieval
 * Validation, error handling, and status codes
 
----
-
-## Architecture Highlights
-
-* Clean separation of concerns across layers
-* Stateless REST APIs secured via JWT
-* Transaction-safe database operations with rollback support
-* Optimized SQL queries to reduce API latency (~30%)
-* Designed for **high-throughput financial workloads**
-* Cloud-ready and container-first architecture
-* Handling **10,000+ transactions per minute**
-
----
-
-## Future Enhancements
-
-* Audit logging and historical reporting
-* Fraud detection and rule-based validation
-* Rate limiting and API throttling
-* Admin dashboard
-* Event-driven processing (Kafka / PubSub)
-* CI/CD pipelines with automated testing
+--
 
 
 
