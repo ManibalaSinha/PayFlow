@@ -2,6 +2,32 @@
 
 **PayFlow** is a **production-grade payment backend system** built with **FastAPI** and **PostgreSQL**, designed to handle **reliable, idempotent, and fault-tolerant payment workflows**.
 
+Kafka Topics
+
+order.created
+    → Published when a new trade order is received
+
+order.validated
+    → Published after order validation
+
+trade.executed
+    → Published when an order is successfully executed
+
+trade.settled
+    → Published after settlement is complete
+
+risk.checked
+    → Published after pre-trade risk validation
+
+portfolio.updated
+    → Published when holdings are updated
+
+position.updated
+    → Published after a position changes
+
+market.price.updated
+    → Published when new market prices are received
+
 It focuses on **real-world financial system challenges** such as:
 
 * Preventing duplicate transactions (idempotency)
