@@ -35,9 +35,7 @@ It focuses on **real-world financial system challenges** such as:
 * Ensuring data consistency via reconciliation
 * Supporting scalable, cloud-native deployments
 
-<p align="center">
-  <a href="https://youtu.be/VEWHFmKNO2c?si=j_6FUYbjBTVRr4xe">▶ Watch Demo</a>
-</p>
+
 
 ---
 
