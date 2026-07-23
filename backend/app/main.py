@@ -6,21 +6,16 @@ from app.db.session import engine
 from app.models import Base
 from sqlalchemy.orm import Session
 from app.db.deps import get_db
-from app.api import users
-from app.routers import payments,reconciliation
+from app.api.v1 import users
+from app.routers import payments,reconciliation, orders
 import logging
-from app.api.v1.users import api_router
 
-app = FastAPI(
-    title="PayFlow API",
-    version="1.0.0"
-)
+app = FastAPI(title="PayFlow trade transaction", version="2.0.0")
 
 app.include_router(payments.router, prefix="/payments", tags=["Payments"])
 app.include_router(reconciliation.router, prefix="/reconcile", tags=["Reconciliation"])
 app.include_router(users.router, prefix="/users", tags=["users"])
-app.include_router(api_router, prefix="/api/v1")
-
+app.include_router(orders.router, prefix="/orders", tags=["Orders"])
 logger = logging.getLogger(__name__)
 @app.on_event("startup")
 def startup():
