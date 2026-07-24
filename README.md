@@ -17,10 +17,6 @@ Built to simulate challenges found in modern banking and fintech platforms.
 ---
 
 <p align="center">
-  <a href="https://youtu.be/VEWHFmKNO2c?si=j_6FUYbjBTVRr4xe">▶ Watch Demo</a>
-</p>
-
-<p align="center">
   <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/cloudshell.png" width="600" />
   <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/PaymentFlow.png" width="600" />
   <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/InitiatePayment.png" width="600" />
