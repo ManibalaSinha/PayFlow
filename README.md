@@ -1,41 +1,41 @@
-#  PayFlow — Scalable Payment Processing API (FastAPI)
+#  PayFlow — Enterprise Payment Processing Platform | FastAPI + PostgreSQL + Kafka
 
-**PayFlow** is a **production-grade payment backend system** built with **FastAPI** and **PostgreSQL**, designed to handle **reliable, idempotent, and fault-tolerant payment workflows**.
+PayFlow is a production-style payment processing backend built with
+FastAPI, PostgreSQL, and event-driven architecture.
 
-Kafka Topics
+The system demonstrates real-world financial engineering concepts:
 
-order.created
-    → Published when a new trade order is received
+- Idempotent payment processing
+- Transaction consistency and ACID guarantees
+- Retry handling for transient failures
+- Reconciliation workflows
+- Secure authentication
+- Event-driven processing with Kafka
+- Cloud-native deployment patterns
 
-order.validated
-    → Published after order validation
+Built to simulate challenges found in modern banking and fintech platforms.
+---
 
-trade.executed
-    → Published when an order is successfully executed
+<p align="center">
+  <a href="https://youtu.be/VEWHFmKNO2c?si=j_6FUYbjBTVRr4xe">▶ Watch Demo</a>
+</p>
 
-trade.settled
-    → Published after settlement is complete
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/cloudshell.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/PaymentFlow.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/InitiatePayment.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/userDetails.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievedData.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievingUrl.png" width="600" />
+</p>
+Payment workflow events:
 
-risk.checked
-    → Published after pre-trade risk validation
-
-portfolio.updated
-    → Published when holdings are updated
-
-position.updated
-    → Published after a position changes
-
-market.price.updated
-    → Published when new market prices are received
-
-It focuses on **real-world financial system challenges** such as:
-
-* Preventing duplicate transactions (idempotency)
-* Handling transient failures with retry strategies
-* Ensuring data consistency via reconciliation
-* Supporting scalable, cloud-native deployments
-
-
+payment.created
+payment.validated
+payment.processed
+payment.settled
+payment.failed
+payment.reconciled
 
 ---
 
@@ -95,18 +95,47 @@ In distributed payment systems:
 
 ##  System Architecture
 
-```
-Client / Frontend
-        │
-        ▼
-FastAPI (REST API Layer)
-        │
-        ▼
-Service Layer (Business Logic)
-        │
-        ▼
-PostgreSQL (ACID Transactions)
-```
+## Architecture
+
+Client
+ |
+ v
+FastAPI API Gateway
+ |
+ v
+Payment Service
+ |
+ +---- PostgreSQL (ACID Transactions)
+ |
+ +---- Kafka Event Bus
+ |
+ +---- Redis Cache
+ |
+ +---- Celery Workers
+ |
+ +---- Monitoring / Logging
+
+## KAFKA
+## Event-Driven Workflow
+
+Payment lifecycle events:
+
+payment.created
+        |
+        v
+payment.validated
+        |
+        v
+payment.processing
+        |
+        v
+payment.completed
+
+Failure scenarios:
+
+payment.failed
+payment.retry
+payment.reconciled
 
 ### Design Principles:
 
@@ -123,7 +152,6 @@ PostgreSQL (ACID Transactions)
 * Implemented **ACID-compliant transactions** for financial consistency
 * Built **retry logic with exponential backoff** for resilience
 * Modeled domain entities: accounts, payments, audit logs
-* Reduced API latency via optimized queries (~30% improvement)
 * Structured backend for **horizontal scalability**
 
 ---
@@ -212,7 +240,7 @@ POST /initiate-payment
 ##  Scalability & Performance
 
 * Supports **high-throughput transaction systems**
-* Designed to handle **10,000+ transactions/minute (scalable architecture)**
+* Designed for horizontal scaling and high-throughput transaction processing.
 * Stateless services enable **horizontal scaling**
 * Ready for queue-based async processing (SQS / PubSub)
 
@@ -238,7 +266,7 @@ This project demonstrates:
 * Backend expertise in **FastAPI + PostgreSQL**
 * Production-ready thinking (reliability, consistency, scaling)
 
- Not just CRUD — **a system built for real financial workflows**
+**a system built for real financial workflows**
 
 ---
 
@@ -248,162 +276,3 @@ This project demonstrates:
 Senior Backend Engineer | Python | FastAPI
 
 GitHub: [https://github.com/ManibalaSinha](https://github.com/ManibalaSinha)
-
----
-
-<p align="center">
-  <a href="https://youtu.be/VEWHFmKNO2c?si=j_6FUYbjBTVRr4xe">▶ Watch Demo</a>
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/cloudshell.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/PaymentFlow.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/InitiatePayment.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/userDetails.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievedData.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievingUrl.png" width="600" />
-</p>
-
----
-## Features
-- `/initiate-payment` – Idempotent payment initiation
-- `/payment-status/{payment_id}` – Track payment status
-- `/reconcile` – Batch reconciliation for failed/incomplete payments
-- Async retry logic with exponential backoff
-- Observability: structured logs & metrics
-
-## Key Capabilities
-
-* Secure authentication and authorization using **JWT**
-* Account and transaction management with **ACID guarantees**
-* High-performance REST APIs built with **FastAPI**
-* Strong domain modeling for accounts, transactions, and audit logs
-* Modular, layered backend architecture (API → Service → Persistence)
-* Dockerized for consistent **local, staging, and cloud deployments**
-* Designed for enterprise extensibility (audit, fraud detection, limits)
-
----
-
-## Tech Stack
-- Python, FastAPI
-- PostgreSQL
-- AWS (Lambda, SQS, RDS) or GCP (Cloud Run, Pub/Sub, Cloud SQL)
-- Docker, CI/CD
-
-  * ACID-compliant transactions
-  * Referential integrity
-  * Optimized schema for financial data
-
-### Security
-
-* **JWT-based authentication**
-* Secure password hashing using **Passlib**
-* **Role-based access control (RBAC)** ready
-* Stateless API design
-
-### DevOps & Tooling
-
-* **Docker & Docker Compose**
-* Environment-based configuration
-* Hot reload for efficient development
-* Cloud-deployment ready (AWS / GCP / Azure)
-
----
-
-## System Architecture
-
-```
-Client (React)
-      |
-      v
-REST API (FastAPI)
-      |
-      v
-Service Layer (Business Logic)
-      |
-      v
-PostgreSQL (Transactional Data Store)
-```
-
-The backend is designed to scale horizontally and supports transactional rollback, validation, and fault isolation.
-
----
-
-## Project Structure
-
-```
-enterprise-transaction-platform/
-│
-├── backend/
-│   ├── app/
-│   │   ├── api/        # Route definitions
-│   │   ├── core/       # Config, security, utilities
-│   │   ├── models/    # SQLAlchemy models
-│   │   ├── schemas/   # Pydantic schemas
-│   │   ├── services/  # Business logic
-│   │   ├── db/        # Database session & setup
-│   │   └── main.py
-│   ├── Dockerfile
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── Dockerfile
-│
-├── docker-compose.yml
-└── README.md
-```
-
----
-
-## Local Setup & Installation
-
-### 1️ Clone the Repository
-
-```bash
-git clone https://github.com/ManibalaSinha/enterprise-transaction-platform.git
-cd enterprise-transaction-platform
-```
-
-### 2️ Configure Environment Variables
-
-```env
-DATABASE_URL=postgresql://postgres:postgres@db:5432/transactions
-SECRET_KEY=secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=60
-```
-
-### 3️ Run with Docker
-
-```bash
-docker-compose up --build
-```
-
-**Access the application:**
-
-* Backend API → `http://localhost:8000`
-* Swagger Docs → `http://localhost:8000/docs`
-* Frontend → `http://localhost:3000`
-
----
-
-## API Documentation
-
-FastAPI provides interactive API documentation out of the box:
-
-* **Swagger UI** → `/docs`
-* **ReDoc** → `/redoc`
-
-Covered endpoints include:
-
-* Authentication & authorization
-* Account creation and management
-* Transaction creation and retrieval
-* Validation, error handling, and status codes
-
---
-
-
-
