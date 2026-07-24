@@ -186,12 +186,7 @@ git clone https://github.com/ManibalaSinha/enterprise-transaction-platform.git
 cd enterprise-transaction-platform
 ```
 
-### 2. Configure environment
-
-```env
-DATABASE_URL=postgresql://postgres:postgres@db:5432/transactions
-SECRET_KEY=your_secret
-```
+### 2. Configure environment
 
 ### 3. Run with Docker
 
@@ -253,9 +248,7 @@ POST /initiate-payment
 
 ---
 
-##  Why This Project Stands Out
-
-This project demonstrates:
+## This project demonstrates:
 
 * Real-world **payment system design**
 * Strong understanding of **distributed system challenges**
