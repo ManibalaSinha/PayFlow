@@ -7,7 +7,11 @@ services:
     volumes:
       - .:/app
     environment:
+<<<<<<< HEAD
       DATABASE_URL: ${POSTGRES_URL}
+=======
+      DATABASE_URL: ${DATABASE_URL}
+>>>>>>> 5238d97 (clean up)
     depends_on:
       db:
         condition: service_healthy
