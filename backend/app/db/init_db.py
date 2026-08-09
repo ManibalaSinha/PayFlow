@@ -1,7 +1,7 @@
 from app.db.base import Base
 from app.db.session import engine
-# import models so they register with Base
 from app.models.user import User
+from app import models
 
 def init_db():
     Base.metadata.create_all(bind=engine)

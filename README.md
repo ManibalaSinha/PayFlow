@@ -2,6 +2,7 @@
 
 PayFlow is a production-style payment processing backend built with
 FastAPI, PostgreSQL, and event-driven architecture.
+<<<<<<< HEAD
 
 The system demonstrates real-world financial engineering concepts:
 
@@ -32,18 +33,54 @@ payment.processed
 payment.settled
 payment.failed
 payment.reconciled
+=======
 
+The system demonstrates real-world financial engineering concepts:
+
+- Idempotent payment processing
+- Transaction consistency and ACID guarantees
+- Retry handling for transient failures
+- Reconciliation workflows
+- Secure authentication
+- Event-driven processing with Kafka
+- Cloud-native deployment patterns
+>>>>>>> 5bdfaff (payment protected)
+
+Built to simulate challenges found in modern banking and fintech platforms.
 ---
 
-##  Problem Statement
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/cloudshell.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/PaymentFlow.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/InitiatePayment.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/userDetails.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievedData.png" width="600" />
+  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievingUrl.png" width="600" />
+</p>
+Payment workflow events:
+payments
+    ↓
+payment_attempts       ← retry/attempt tracking
 
-In distributed payment systems:
+payments
+    ↓
+idempotency_key        ← duplicate-payment protection
 
-* Network failures can cause **duplicate charges**
-* Partial failures lead to **inconsistent transaction states**
-* Systems must guarantee **eventual consistency**
-
-**PayFlow solves this by combining idempotent APIs, retry mechanisms, and reconciliation workflows.**
+accounts
+    ↓
+transactions           ← account transaction history
+---
+FastAPI
+   ↓
+PostgreSQL/payflow
+   ↓
+CRUD/API endpoints
+   ↓
+Kafka events
+   ↓
+Redis/cache
+   ↓
+Celery/background processing
 
 ---
 
@@ -265,3 +302,7 @@ POST /initiate-payment
 Senior Backend Engineer | Python | FastAPI
 
 GitHub: [https://github.com/ManibalaSinha](https://github.com/ManibalaSinha)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5bdfaff (payment protected)

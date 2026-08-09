@@ -1,5 +1,4 @@
 from fastapi import Depends, FastAPI
-from app.api.v1.users import router
 from app.db.session import SessionLocal
 from app.models.user import User
 from app.db.session import engine

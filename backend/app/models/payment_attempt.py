@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, Numeric, DateTime, ForeignKey, func
-from sqlalchemy.ext.declarative import declarative_base
+from app.db.base import Base
 from sqlalchemy.orm import relationship
-
-Base = declarative_base()
 
 class PaymentAttempt(Base):
     __tablename__ = "payment_attempts"

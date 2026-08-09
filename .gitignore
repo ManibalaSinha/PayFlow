@@ -6,9 +6,11 @@ backend/.env
 
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.coverage
 .venv/
 # Python virtual environments
 backend/.venv2/

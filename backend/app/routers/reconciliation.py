@@ -5,8 +5,8 @@ from app.models.payment_attempt import PaymentAttempt
 from app.utils.db import get_db
 
 router = APIRouter()
-
-@router.post("/reconcile")
+@router.post("")
+#@router.post("/reconcile")
 def reconcile_payments(db: Session = Depends(get_db)):
     failed_payments = db.query(Payment).filter(Payment.status=="FAILED").all()
     reconciled = 0
