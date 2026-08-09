@@ -2,7 +2,6 @@
 
 PayFlow is a production-style payment processing backend built with
 FastAPI, PostgreSQL, and event-driven architecture.
-<<<<<<< HEAD
 
 The system demonstrates real-world financial engineering concepts:
 
@@ -44,19 +43,9 @@ The system demonstrates real-world financial engineering concepts:
 - Secure authentication
 - Event-driven processing with Kafka
 - Cloud-native deployment patterns
->>>>>>> 5bdfaff (payment protected)
 
 Built to simulate challenges found in modern banking and fintech platforms.
 ---
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/cloudshell.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/PaymentFlow.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/InitiatePayment.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/userDetails.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievedData.png" width="600" />
-  <img src="https://raw.githubusercontent.com/ManibalaSinha/ENTERPRISE-TRANSACTION-PLATFORM/main/backend/app/assets/RetrievingUrl.png" width="600" />
-</p>
 Payment workflow events:
 payments
     ↓
@@ -223,7 +212,8 @@ git clone https://github.com/ManibalaSinha/enterprise-transaction-platform.git
 cd enterprise-transaction-platform
 ```
 
-### 2. Configure environment
+### 2. Configure environment
+
 
 ### 3. Run with Docker
 
@@ -285,7 +275,8 @@ POST /initiate-payment
 
 ---
 
-## This project demonstrates:
+## 
+This project demonstrates:
 
 * Real-world **payment system design**
 * Strong understanding of **distributed system challenges**
@@ -302,7 +293,5 @@ POST /initiate-payment
 Senior Backend Engineer | Python | FastAPI
 
 GitHub: [https://github.com/ManibalaSinha](https://github.com/ManibalaSinha)
-<<<<<<< HEAD
-=======
 
->>>>>>> 5bdfaff (payment protected)
+=======
