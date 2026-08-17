@@ -12,9 +12,13 @@ import logging
 app = FastAPI(title="PayFlow trade transaction", version="2.0.0")
 
 app.include_router(payments.router, prefix="/payments", tags=["Payments"])
+
 app.include_router(reconciliation.router, prefix="/reconcile", tags=["Reconciliation"])
+
 app.include_router(users.router, prefix="/users", tags=["users"])
+
 app.include_router(orders.router, prefix="/orders", tags=["Orders"])
+
 logger = logging.getLogger(__name__)
 @app.on_event("startup")
 def startup():

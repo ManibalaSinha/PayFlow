@@ -1,27 +1,51 @@
-from fastapi import FastAPI
-from fastapi import APIRouter, Depends, HTTPException
+from app.db.deps import get_db
+from app.models import Order
+from app.schemas.order import OrderCreate
 from app.kafka.producer import publish_event
 from app.core.kafka_topics import ORDER_CREATED
-
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
 router = APIRouter()
-#app = FastAPI()
 
+@router.get("/")
+def get_orders(db: Session = Depends(get_db)):
+    return db.query(Order).all()
 
-@router.post("/")
-def create_order():
+@router.post("/", response_model=dict)
+def create_order(
+    order_data: OrderCreate,
+    db: Session = Depends(get_db)
+):
+    try:
+        order = Order(
+            symbol=order_data.symbol,
+            quantity=order_data.quantity,
+            price=order_data.price
+        )
 
-    order = {
-        "order_id":1001,
-        "symbol":"AAPL",
-        "quantity":10,
-        "price":220
-    }
+        db.add(order)
+        db.commit()
+        db.refresh(order)
 
+        event = {
+            "order_id": order.id,
+            "symbol": order.symbol,
+            "quantity": order.quantity,
+            "price": order.price
+        }
 
-    publish_event(ORDER_CREATED,order)
+        publish_event(ORDER_CREATED, event)
 
+        return {
+            "id": order.id,
+            "symbol": order.symbol,
+            "quantity": order.quantity,
+            "price": order.price
+        }
 
-    return {
-        "message":"Order created",
-        "order":order
-    }
+    except ValueError as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )

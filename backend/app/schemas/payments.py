@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
 
-
 class PaymentCreate(BaseModel):
     user_id: int
     amount: float

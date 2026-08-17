@@ -11,3 +11,4 @@ POSITION_UPDATED = "position.updated"
 RISK_CHECKED = "risk.checked"
 
 MARKET_PRICE_UPDATED = "market.price.updated"
+PAYMENT_CREATED = "payment.created"

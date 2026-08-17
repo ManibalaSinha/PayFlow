@@ -2,7 +2,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.models.payment import Payment
 from app.models.payment_attempt import PaymentAttempt
-from app.utils.db import get_db
+#from app.utils.db import get_db
+from app.db.deps import get_db
+from sqlalchemy.orm import Session
+from app.models.payment import Payment
 
 router = APIRouter()
 @router.post("")
